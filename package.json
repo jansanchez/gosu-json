@@ -1,0 +1,32 @@
+{
+  "name": "gosu-json",
+  "version": "0.4.2",
+  "private": true,
+  "type": "module",
+  "description": "A local-first, lossless JSON workspace for browsers.",
+  "license": "MIT",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test",
+    "check": "node scripts/check.mjs",
+    "package": "python3 scripts/package.py",
+    "test:ui": "node scripts/ui-smoke.cjs",
+    "format": "prettier --write src scripts tests docs *.md package.json .github",
+    "format:check": "prettier --check src scripts tests docs *.md package.json .github",
+    "safari:project": "node scripts/safari-project.mjs",
+    "safari:build": "node scripts/safari-build.mjs"
+  },
+  "dependencies": {
+    "@codemirror/commands": "6.11.1",
+    "@codemirror/lang-json": "6.0.2",
+    "@codemirror/language": "6.12.4",
+    "@codemirror/state": "6.7.6",
+    "@codemirror/view": "6.43.13",
+    "@lezer/highlight": "1.2.5"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "playwright": "1.63.0",
+    "prettier": "3.9.9"
+  }
+}

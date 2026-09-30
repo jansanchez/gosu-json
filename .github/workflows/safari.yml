@@ -1,0 +1,26 @@
+name: Safari packaging
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  package:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - run: npm run check
+      - run: npm run safari:project
+      - run: npm run safari:build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gosu-json-safari-xcode-project
+          path: |
+            build/safari/
+            build/safari-derived/Build/Products/Debug/*.app
+          if-no-files-found: error

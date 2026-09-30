@@ -1,0 +1,17 @@
+# Architecture
+
+`src/core/json.js` is browser-independent. It parses to an AST with source spans, preserves number text and duplicate properties, and provides formatting, node replacement, search, pointers and diff. Objects are represented as ordered children, not user-controlled JavaScript property bags.
+
+`worker.js` caches the parsed document by source content. The primary worker runs parsing, formatting and diff; a separate cached worker handles search and can be terminated after a 2-second deadline without interrupting the editor. Search returns IDs (source offsets), ranges and match spans, not whole subtrees. Cancel terminates and recreates the worker. Revision checks discard results produced for stale editor contents.
+
+`workspace.js` renders using DOM text APIs. `editor.js` bundles CodeMirror 6 for incremental syntax highlighting, viewport rendering and undo/redo. `virtual-list.js` renders fixed-height visible tree/result rows with overscan. `core/tree.js` indexes source-offset IDs and parents, preserving duplicate-key identity. Reveal expands ancestors and scrolls to the corresponding row; it does not create preceding DOM rows. Tables and diff paginate. Keys and values use shared semantic CSS tokens. Long tree previews are bounded at 240 characters, with context around a match.
+
+`background.js` transfers imported documents using one-use random tokens and transient memory. `capture.js` reads the currently displayed response without refetching. It never replaces the endpoint DOM. A static MIME detector handles JSON documents. The popup and workspace store per-origin always/manual choices. Imported valid JSON is losslessly formatted in the worker; a separate baseline prevents automatic formatting from appearing as a user edit.
+
+`scripts/build.mjs` emits MV3 manifests for Chromium's service worker and Firefox's background scripts. esbuild bundles CodeMirror locally; exact dependencies and licenses are recorded. Nothing is loaded from a CDN. API calls use modern Promise-based WebExtensions APIs; compatibility must be validated with target browser releases.
+
+Known tradeoffs: AST transfers duplicate memory temporarily; the 10 MiB limit is a safety bound, not a performance guarantee. Flattening the expanded tree still takes O(visible nodes) CPU and memory; DOM rendering is bounded. Regex cannot be cooperatively interrupted mid-execution, so the UI terminates its isolated worker. Main-thread parsing is limited to explicit node replacement and nested-string opening. Diff compares arrays by index and number/string lexemes literally, so `1.0` and `1` are a change. Objects with duplicate keys compare as whole subtrees.
+
+References: [WebExtensions portability](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Build_a_cross_browser_extension), [optional permissions](https://developer.chrome.com/docs/extensions/develop/concepts/declare-permissions), [script registration](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/scripting/registerContentScripts).
+
+`core/endpoint.js` validates HTTP/HTTPS URLs, encodes/decodes direct links and streams GET responses within the size bound. The workspace supervises cancellation, a 30-second network deadline and stale request versions. It validates JSON in the primary worker before replacing existing content. HTTP status and bytes remain visible separately from document validation/search status. All fetching occurs in the extension workspace, not a content script. Cookies and URL userinfo credentials are excluded.

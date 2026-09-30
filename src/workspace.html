@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>GOSU JSON</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="brand">
+        <b>GOSU JSON</b><span>Beautiful JSON. Powerful tools.</span>
+      </div>
+      <input id="name" aria-label="Document name" value="Untitled" /><select
+        id="theme"
+        aria-label="Color theme"
+      >
+        <option value="auto">System theme</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option></select
+      ><button id="commands" title="Ctrl/Cmd+K">Commands ⌘K</button>
+    </header>
+    <form id="endpointForm" class="endpoint-bar" aria-label="Open an endpoint">
+      <label for="endpointURL">Endpoint</label>
+      <input
+        id="endpointURL"
+        type="url"
+        placeholder="https://api.example.com/data.json"
+        aria-label="Endpoint URL"
+        spellcheck="false"
+        required
+      />
+      <button id="loadURL" type="submit">Open URL</button>
+      <button id="refreshURL" type="button" disabled>Refresh</button>
+      <button id="copyLink" type="button">Copy viewer link</button>
+      <button id="cancelURL" type="button" hidden>Cancel request</button>
+      <span id="requestStatus" role="status" aria-live="polite"></span>
+    </form>
+    <nav aria-label="Document actions">
+      <button id="open">Open file</button
+      ><input
+        id="file"
+        type="file"
+        accept=".json,.txt,application/json"
+        hidden
+      /><button id="paste">Paste</button><button id="format">Format</button
+      ><button id="compact">Compact</button
+      ><button id="original">Restore original</button
+      ><button id="download">Download</button
+      ><button id="compare">Compare file</button
+      ><input id="other" type="file" accept=".json,.txt" hidden /><button
+        id="cancel"
+        hidden
+      >
+        Cancel operation
+      </button>
+    </nav>
+    <section
+      id="openingPrompt"
+      class="opening-prompt"
+      hidden
+      aria-label="Automatic opening preference"
+    >
+      <div>
+        <strong>Open JSON automatically on this site?</strong>
+        <p id="openingOrigin"></p>
+      </div>
+      <button id="alwaysOpen">Always on this site</button
+      ><button id="manualOpen">Only when I choose</button>
+    </section>
+    <div class="toolbar">
+      <input
+        id="search"
+        type="search"
+        placeholder="Search keys and values…"
+        aria-label="Search keys and values"
+      />
+      <div class="search-options">
+        <select id="searchMode" aria-label="Search mode">
+          <option value="text">Text</option>
+          <option value="regex">Regex</option></select
+        ><select id="searchScope" aria-label="Search scope">
+          <option value="both">Keys + values</option>
+          <option value="values">Values</option>
+          <option value="keys">Keys</option></select
+        ><label><input id="searchCase" type="checkbox" /> Aa</label
+        ><label id="exactLabel"
+          ><input id="searchExact" type="checkbox" /> Exact</label
+        >
+      </div>
+      <div class="view-tabs" role="group" aria-label="Inspector views">
+        <button data-view="tree" aria-pressed="true">Tree</button
+        ><button data-view="code" aria-pressed="false">Code</button
+        ><button data-view="table" aria-pressed="false">Table</button
+        ><button data-view="diff" aria-pressed="false">Diff</button>
+      </div>
+    </div>
+    <main>
+      <section id="editorPane">
+        <label for="editor">JSON source <span id="dirty"></span></label>
+        <div id="editor" aria-label="JSON source editor"></div>
+      </section>
+      <section id="inspector" aria-label="JSON inspector">
+        <div id="results"></div>
+        <div id="view"></div>
+      </section>
+    </main>
+    <aside aria-label="Selected value">
+      <code id="path">Select a node</code
+      ><button id="copyValue">Copy value</button
+      ><button id="copyJson">Copy JSON</button
+      ><button id="copyPath">Copy pointer</button
+      ><button id="copyJsonPath">Copy JSONPath</button
+      ><button id="editNode">Edit node</button
+      ><button id="tableNode">Table from node</button
+      ><button id="nested">Open nested JSON</button>
+    </aside>
+    <footer>
+      <span id="status" role="status" aria-live="polite"
+        >Ready · Local processing · 10 MiB limit</span
+      >
+    </footer>
+    <dialog id="editDialog">
+      <form method="dialog">
+        <h2>Edit selected node</h2>
+        <p>Enter a valid JSON value. Changes stay local.</p>
+        <textarea
+          id="replacement"
+          aria-label="Replacement JSON"
+          spellcheck="false"
+        ></textarea>
+        <p id="editError" role="alert"></p>
+        <button value="cancel">Cancel</button
+        ><button type="button" id="apply">Apply</button>
+      </form>
+    </dialog>
+    <dialog id="palette">
+      <h2>Commands</h2>
+      <div id="commandList"></div>
+      <button id="closePalette">Close</button>
+    </dialog>
+    <script type="module" src="workspace.js"></script>
+  </body>
+</html>

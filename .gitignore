@@ -1,0 +1,10 @@
+dist/
+releases/
+node_modules/
+.DS_Store
+*.log
+artifacts/
+*.xcodeproj/
+*.xcworkspace/
+DerivedData/
+build/
