@@ -1,0 +1,7 @@
+# Development tools only. Nothing is installed on the host.
+FROM node:24.21.0-bookworm-slim
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends python3 \
+    && rm -rf /var/lib/apt/lists/*
+WORKDIR /workspace
+ENV npm_config_cache=/tmp/gosu-npm-cache

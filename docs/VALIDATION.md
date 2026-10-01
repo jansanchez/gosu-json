@@ -45,3 +45,11 @@ These checks run the workspace in headless Linux Chromium, not an installed Wind
 The source editor and right Code preview now use the browser's native selection rendering rather than CodeMirror's custom drawSelection overlay. Syntax highlighting, editing and undo are retained. Chromium UI checks passed for actual mouse-drag selection of a source value, Ctrl+C clipboard-event text, double-click selection/copy in the source editor and double-click/copy in the read-only Code preview. Existing tree/table selection, selected-array Table navigation and other smoke checks also passed.
 
 Windows itself has not been tested in this Linux execution environment. The clipboard checks inspect text delivered through the native copy event; they do not verify pasting into a Windows application.
+
+## 0.4.2 container tooling (2026-10-01)
+
+The extension remains at 0.4.2. Added Makefile, a Node 24.21.0 development Dockerfile with Python, a minimal Docker build context, and a version-scoped esbuild install-script approval.
+
+- All 32 unit tests passed; all browser resources built; syntax/permission and formatting checks passed; release ZIPs generated.
+- `make help`, Docker/Podman command dry runs, and the missing-engine failure message were checked.
+- Docker and Podman are unavailable in the validation environment. The container image was not built and `make all` was not executed inside a real container. Verify it on a machine with either engine installed.

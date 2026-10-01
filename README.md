@@ -139,6 +139,40 @@ For code changes, read [CONTRIBUTING.md](CONTRIBUTING.md). Report security probl
 
 ## Development
 
+### One command with Docker or Podman (recommended on Linux)
+
+Install **Make** and either **Docker** or **Podman**. Node.js, npm and Python run inside a project-specific development container, so you do not need them installed on your computer.
+
+From the project directory:
+
+```bash
+make help
+make all
+```
+
+`make all` builds the tools image, installs locked dependencies, runs unit tests, builds all four browser packages, checks syntax/permissions and formatting, then writes release ZIPs and checksums to `releases/`. Each step stops the workflow if it fails. It does not launch browser UI tests or native Safari packaging.
+
+The first run downloads the container image and packages. Later runs reuse Docker/Podman image layers. Output files belong to your Linux user. `node_modules/`, `dist/` and `releases/` stay inside the project directory. No background container or service is left running.
+
+If you use Podman:
+
+```bash
+make all ENGINE=podman
+```
+
+On CachyOS, if Make/Podman are not already installed:
+
+```bash
+sudo pacman -Syu make podman
+make all ENGINE=podman
+```
+
+If both engines are installed, Docker is selected by default. Select Podman explicitly when you prefer it or Docker is not running. Docker must be usable by your account; do not run `sudo make all`. The container runs with your user/group ID so generated files are not owned by root. If your existing project files were created by root, correct their ownership before running the workflow.
+
+To check tool versions, run `make versions`. For individual commands, see `make help`. After `make all`, load `dist/chromium` using your browser's **Load unpacked** action or upload `releases/gosu-json-chromium-0.4.2.zip` to Chrome Web Store.
+
+### Without containers (optional)
+
 Requires **Node.js 24+**; ZIP packaging also requires **Python 3**.
 
 ```sh

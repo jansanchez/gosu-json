@@ -8,3 +8,4 @@ artifacts/
 *.xcworkspace/
 DerivedData/
 build/
+*.zip
