@@ -1,0 +1,5 @@
+{
+  "status": "pending",
+  "status": "paid",
+  "note": "Intentional duplicate key: test the warning and inspect both occurrences."
+}

@@ -1,0 +1,2610 @@
+{
+  "about": {
+    "title": "GOSU JSON playground",
+    "description": "Fictional data for exploring JSON. No accounts, credentials or real API connections.",
+    "startHere": "Open examples/README.md for a guided tour.",
+    "version": "0.4.2",
+    "recordCounts": {
+      "users": 6,
+      "orders": 120
+    }
+  },
+  "meta": {
+    "requestId": "demo-request-001",
+    "generatedAt": "2026-09-30T12:00:00Z",
+    "success": true,
+    "nextPage": null,
+    "links": {
+      "self": "https://api.example.invalid/orders?limit=120&status=all"
+    }
+  },
+  "users": [
+    {
+      "id": 1,
+      "name": "Ana Sánchez",
+      "email": "ana@example.com",
+      "role": "admin",
+      "active": true,
+      "profile": {
+        "city": "Lima",
+        "country": "PE",
+        "language": "es"
+      },
+      "tags": [
+        "developer",
+        "mentor"
+      ],
+      "lastLogin": "2026-09-28T14:30:00Z"
+    },
+    {
+      "id": 2,
+      "name": "Maya Chen",
+      "email": "maya@example.com",
+      "role": "developer",
+      "active": true,
+      "profile": {
+        "city": "Taipei",
+        "country": "TW",
+        "language": "zh"
+      },
+      "tags": [
+        "frontend",
+        "accessibility"
+      ],
+      "lastLogin": "2026-09-29T08:15:00Z"
+    },
+    {
+      "id": 3,
+      "name": "Noah Martin",
+      "email": "noah@example.org",
+      "role": "reviewer",
+      "active": false,
+      "profile": {
+        "city": "Montréal",
+        "country": "CA",
+        "language": "fr"
+      },
+      "tags": [
+        "backend"
+      ],
+      "lastLogin": null
+    },
+    {
+      "id": 4,
+      "name": "Amina Diallo",
+      "email": "amina@example.org",
+      "role": "developer",
+      "active": true,
+      "profile": {
+        "city": "Dakar",
+        "country": "SN",
+        "language": "fr"
+      },
+      "tags": [
+        "automation",
+        "api"
+      ],
+      "lastLogin": "2026-09-30T09:00:00Z"
+    },
+    {
+      "id": 5,
+      "name": "Renée Müller",
+      "email": "renee@example.com",
+      "role": "reviewer",
+      "active": true,
+      "profile": {
+        "city": "Berlin",
+        "country": "DE",
+        "language": "de"
+      },
+      "tags": [],
+      "lastLogin": "2026-09-30T12:00:00Z"
+    },
+    {
+      "id": 6,
+      "name": "Sora Tanaka",
+      "email": "sora@example.net",
+      "role": "guest",
+      "active": false,
+      "profile": {
+        "city": "Tokyo",
+        "country": "JP",
+        "language": "ja"
+      },
+      "tags": [
+        "new-user"
+      ],
+      "lastLogin": null
+    }
+  ],
+  "orders": [
+    {
+      "id": "ORD-0001",
+      "userId": 1,
+      "status": "pending",
+      "currency": "USD",
+      "total": 19.95,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-001",
+          "name": "JSON handbook",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Lima",
+        "tracking": null
+      },
+      "note": "Gift wrap\nPlease keep the receipt."
+    },
+    {
+      "id": "ORD-0002",
+      "userId": 2,
+      "status": "paid",
+      "currency": "USD",
+      "total": 49.5,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-002",
+          "name": "API workshop",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Taipei",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0003",
+      "userId": 3,
+      "status": "shipped",
+      "currency": "USD",
+      "total": 120,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-003",
+          "name": "Developer notebook",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Montréal",
+        "tracking": "TRK-000003"
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0004",
+      "userId": 4,
+      "status": "cancelled",
+      "currency": "USD",
+      "total": 0,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-004",
+          "name": "Browser stickers",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Dakar",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0005",
+      "userId": 5,
+      "status": "pending",
+      "currency": "USD",
+      "total": 19.95,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-005",
+          "name": "JSON handbook",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Berlin",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0006",
+      "userId": 6,
+      "status": "paid",
+      "currency": "USD",
+      "total": 49.5,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-006",
+          "name": "API workshop",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Tokyo",
+        "tracking": null
+      },
+      "note": "Gift wrap\nPlease keep the receipt."
+    },
+    {
+      "id": "ORD-0007",
+      "userId": 1,
+      "status": "shipped",
+      "currency": "USD",
+      "total": 120,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-007",
+          "name": "Developer notebook",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Lima",
+        "tracking": "TRK-000007"
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0008",
+      "userId": 2,
+      "status": "cancelled",
+      "currency": "USD",
+      "total": 0,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-008",
+          "name": "Browser stickers",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Taipei",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0009",
+      "userId": 3,
+      "status": "pending",
+      "currency": "USD",
+      "total": 19.95,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-001",
+          "name": "JSON handbook",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Montréal",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0010",
+      "userId": 4,
+      "status": "paid",
+      "currency": "USD",
+      "total": 49.5,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-002",
+          "name": "API workshop",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Dakar",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0011",
+      "userId": 5,
+      "status": "shipped",
+      "currency": "USD",
+      "total": 120,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-003",
+          "name": "Developer notebook",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Berlin",
+        "tracking": "TRK-000011"
+      },
+      "note": "Gift wrap\nPlease keep the receipt."
+    },
+    {
+      "id": "ORD-0012",
+      "userId": 6,
+      "status": "cancelled",
+      "currency": "USD",
+      "total": 0,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-004",
+          "name": "Browser stickers",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Tokyo",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0013",
+      "userId": 1,
+      "status": "pending",
+      "currency": "USD",
+      "total": 19.95,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-005",
+          "name": "JSON handbook",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Lima",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0014",
+      "userId": 2,
+      "status": "paid",
+      "currency": "USD",
+      "total": 49.5,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-006",
+          "name": "API workshop",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Taipei",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0015",
+      "userId": 3,
+      "status": "shipped",
+      "currency": "USD",
+      "total": 120,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-007",
+          "name": "Developer notebook",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Montréal",
+        "tracking": "TRK-000015"
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0016",
+      "userId": 4,
+      "status": "cancelled",
+      "currency": "USD",
+      "total": 0,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-008",
+          "name": "Browser stickers",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Dakar",
+        "tracking": null
+      },
+      "note": "Gift wrap\nPlease keep the receipt."
+    },
+    {
+      "id": "ORD-0017",
+      "userId": 5,
+      "status": "pending",
+      "currency": "USD",
+      "total": 19.95,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-001",
+          "name": "JSON handbook",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Berlin",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0018",
+      "userId": 6,
+      "status": "paid",
+      "currency": "USD",
+      "total": 49.5,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-002",
+          "name": "API workshop",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Tokyo",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0019",
+      "userId": 1,
+      "status": "shipped",
+      "currency": "USD",
+      "total": 120,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-003",
+          "name": "Developer notebook",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Lima",
+        "tracking": "TRK-000019"
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0020",
+      "userId": 2,
+      "status": "cancelled",
+      "currency": "USD",
+      "total": 0,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-004",
+          "name": "Browser stickers",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Taipei",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0021",
+      "userId": 3,
+      "status": "pending",
+      "currency": "USD",
+      "total": 19.95,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-005",
+          "name": "JSON handbook",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Montréal",
+        "tracking": null
+      },
+      "note": "Gift wrap\nPlease keep the receipt."
+    },
+    {
+      "id": "ORD-0022",
+      "userId": 4,
+      "status": "paid",
+      "currency": "USD",
+      "total": 49.5,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-006",
+          "name": "API workshop",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Dakar",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0023",
+      "userId": 5,
+      "status": "shipped",
+      "currency": "USD",
+      "total": 120,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-007",
+          "name": "Developer notebook",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Berlin",
+        "tracking": "TRK-000023"
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0024",
+      "userId": 6,
+      "status": "cancelled",
+      "currency": "USD",
+      "total": 0,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-008",
+          "name": "Browser stickers",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Tokyo",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0025",
+      "userId": 1,
+      "status": "pending",
+      "currency": "USD",
+      "total": 19.95,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-001",
+          "name": "JSON handbook",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Lima",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0026",
+      "userId": 2,
+      "status": "paid",
+      "currency": "USD",
+      "total": 49.5,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-002",
+          "name": "API workshop",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Taipei",
+        "tracking": null
+      },
+      "note": "Gift wrap\nPlease keep the receipt."
+    },
+    {
+      "id": "ORD-0027",
+      "userId": 3,
+      "status": "shipped",
+      "currency": "USD",
+      "total": 120,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-003",
+          "name": "Developer notebook",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Montréal",
+        "tracking": "TRK-000027"
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0028",
+      "userId": 4,
+      "status": "cancelled",
+      "currency": "USD",
+      "total": 0,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-004",
+          "name": "Browser stickers",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Dakar",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0029",
+      "userId": 5,
+      "status": "pending",
+      "currency": "USD",
+      "total": 19.95,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-005",
+          "name": "JSON handbook",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Berlin",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0030",
+      "userId": 6,
+      "status": "paid",
+      "currency": "USD",
+      "total": 49.5,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-006",
+          "name": "API workshop",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Tokyo",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0031",
+      "userId": 1,
+      "status": "shipped",
+      "currency": "USD",
+      "total": 120,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-007",
+          "name": "Developer notebook",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Lima",
+        "tracking": "TRK-000031"
+      },
+      "note": "Gift wrap\nPlease keep the receipt."
+    },
+    {
+      "id": "ORD-0032",
+      "userId": 2,
+      "status": "cancelled",
+      "currency": "USD",
+      "total": 0,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-008",
+          "name": "Browser stickers",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Taipei",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0033",
+      "userId": 3,
+      "status": "pending",
+      "currency": "USD",
+      "total": 19.95,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-001",
+          "name": "JSON handbook",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Montréal",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0034",
+      "userId": 4,
+      "status": "paid",
+      "currency": "USD",
+      "total": 49.5,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-002",
+          "name": "API workshop",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Dakar",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0035",
+      "userId": 5,
+      "status": "shipped",
+      "currency": "USD",
+      "total": 120,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-003",
+          "name": "Developer notebook",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Berlin",
+        "tracking": "TRK-000035"
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0036",
+      "userId": 6,
+      "status": "cancelled",
+      "currency": "USD",
+      "total": 0,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-004",
+          "name": "Browser stickers",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Tokyo",
+        "tracking": null
+      },
+      "note": "Gift wrap\nPlease keep the receipt."
+    },
+    {
+      "id": "ORD-0037",
+      "userId": 1,
+      "status": "pending",
+      "currency": "USD",
+      "total": 19.95,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-005",
+          "name": "JSON handbook",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Lima",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0038",
+      "userId": 2,
+      "status": "paid",
+      "currency": "USD",
+      "total": 49.5,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-006",
+          "name": "API workshop",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Taipei",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0039",
+      "userId": 3,
+      "status": "shipped",
+      "currency": "USD",
+      "total": 120,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-007",
+          "name": "Developer notebook",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Montréal",
+        "tracking": "TRK-000039"
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0040",
+      "userId": 4,
+      "status": "cancelled",
+      "currency": "USD",
+      "total": 0,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-008",
+          "name": "Browser stickers",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Dakar",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0041",
+      "userId": 5,
+      "status": "pending",
+      "currency": "USD",
+      "total": 19.95,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-001",
+          "name": "JSON handbook",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Berlin",
+        "tracking": null
+      },
+      "note": "Gift wrap\nPlease keep the receipt."
+    },
+    {
+      "id": "ORD-0042",
+      "userId": 6,
+      "status": "paid",
+      "currency": "USD",
+      "total": 49.5,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-002",
+          "name": "API workshop",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Tokyo",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0043",
+      "userId": 1,
+      "status": "shipped",
+      "currency": "USD",
+      "total": 120,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-003",
+          "name": "Developer notebook",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Lima",
+        "tracking": "TRK-000043"
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0044",
+      "userId": 2,
+      "status": "cancelled",
+      "currency": "USD",
+      "total": 0,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-004",
+          "name": "Browser stickers",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Taipei",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0045",
+      "userId": 3,
+      "status": "pending",
+      "currency": "USD",
+      "total": 19.95,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-005",
+          "name": "JSON handbook",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Montréal",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0046",
+      "userId": 4,
+      "status": "paid",
+      "currency": "USD",
+      "total": 49.5,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-006",
+          "name": "API workshop",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Dakar",
+        "tracking": null
+      },
+      "note": "Gift wrap\nPlease keep the receipt."
+    },
+    {
+      "id": "ORD-0047",
+      "userId": 5,
+      "status": "shipped",
+      "currency": "USD",
+      "total": 120,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-007",
+          "name": "Developer notebook",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Berlin",
+        "tracking": "TRK-000047"
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0048",
+      "userId": 6,
+      "status": "cancelled",
+      "currency": "USD",
+      "total": 0,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-008",
+          "name": "Browser stickers",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Tokyo",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0049",
+      "userId": 1,
+      "status": "pending",
+      "currency": "USD",
+      "total": 19.95,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-001",
+          "name": "JSON handbook",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Lima",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0050",
+      "userId": 2,
+      "status": "paid",
+      "currency": "USD",
+      "total": 49.5,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-002",
+          "name": "API workshop",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Taipei",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0051",
+      "userId": 3,
+      "status": "shipped",
+      "currency": "USD",
+      "total": 120,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-003",
+          "name": "Developer notebook",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Montréal",
+        "tracking": "TRK-000051"
+      },
+      "note": "Gift wrap\nPlease keep the receipt."
+    },
+    {
+      "id": "ORD-0052",
+      "userId": 4,
+      "status": "cancelled",
+      "currency": "USD",
+      "total": 0,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-004",
+          "name": "Browser stickers",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Dakar",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0053",
+      "userId": 5,
+      "status": "pending",
+      "currency": "USD",
+      "total": 19.95,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-005",
+          "name": "JSON handbook",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Berlin",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0054",
+      "userId": 6,
+      "status": "paid",
+      "currency": "USD",
+      "total": 49.5,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-006",
+          "name": "API workshop",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Tokyo",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0055",
+      "userId": 1,
+      "status": "shipped",
+      "currency": "USD",
+      "total": 120,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-007",
+          "name": "Developer notebook",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Lima",
+        "tracking": "TRK-000055"
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0056",
+      "userId": 2,
+      "status": "cancelled",
+      "currency": "USD",
+      "total": 0,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-008",
+          "name": "Browser stickers",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Taipei",
+        "tracking": null
+      },
+      "note": "Gift wrap\nPlease keep the receipt."
+    },
+    {
+      "id": "ORD-0057",
+      "userId": 3,
+      "status": "pending",
+      "currency": "USD",
+      "total": 19.95,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-001",
+          "name": "JSON handbook",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Montréal",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0058",
+      "userId": 4,
+      "status": "paid",
+      "currency": "USD",
+      "total": 49.5,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-002",
+          "name": "API workshop",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Dakar",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0059",
+      "userId": 5,
+      "status": "shipped",
+      "currency": "USD",
+      "total": 120,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-003",
+          "name": "Developer notebook",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Berlin",
+        "tracking": "TRK-000059"
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0060",
+      "userId": 6,
+      "status": "cancelled",
+      "currency": "USD",
+      "total": 0,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-004",
+          "name": "Browser stickers",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Tokyo",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0061",
+      "userId": 1,
+      "status": "pending",
+      "currency": "USD",
+      "total": 19.95,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-005",
+          "name": "JSON handbook",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Lima",
+        "tracking": null
+      },
+      "note": "Gift wrap\nPlease keep the receipt."
+    },
+    {
+      "id": "ORD-0062",
+      "userId": 2,
+      "status": "paid",
+      "currency": "USD",
+      "total": 49.5,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-006",
+          "name": "API workshop",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Taipei",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0063",
+      "userId": 3,
+      "status": "shipped",
+      "currency": "USD",
+      "total": 120,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-007",
+          "name": "Developer notebook",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Montréal",
+        "tracking": "TRK-000063"
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0064",
+      "userId": 4,
+      "status": "cancelled",
+      "currency": "USD",
+      "total": 0,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-008",
+          "name": "Browser stickers",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Dakar",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0065",
+      "userId": 5,
+      "status": "pending",
+      "currency": "USD",
+      "total": 19.95,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-001",
+          "name": "JSON handbook",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Berlin",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0066",
+      "userId": 6,
+      "status": "paid",
+      "currency": "USD",
+      "total": 49.5,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-002",
+          "name": "API workshop",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Tokyo",
+        "tracking": null
+      },
+      "note": "Gift wrap\nPlease keep the receipt."
+    },
+    {
+      "id": "ORD-0067",
+      "userId": 1,
+      "status": "shipped",
+      "currency": "USD",
+      "total": 120,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-003",
+          "name": "Developer notebook",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Lima",
+        "tracking": "TRK-000067"
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0068",
+      "userId": 2,
+      "status": "cancelled",
+      "currency": "USD",
+      "total": 0,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-004",
+          "name": "Browser stickers",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Taipei",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0069",
+      "userId": 3,
+      "status": "pending",
+      "currency": "USD",
+      "total": 19.95,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-005",
+          "name": "JSON handbook",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Montréal",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0070",
+      "userId": 4,
+      "status": "paid",
+      "currency": "USD",
+      "total": 49.5,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-006",
+          "name": "API workshop",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Dakar",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0071",
+      "userId": 5,
+      "status": "shipped",
+      "currency": "USD",
+      "total": 120,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-007",
+          "name": "Developer notebook",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Berlin",
+        "tracking": "TRK-000071"
+      },
+      "note": "Gift wrap\nPlease keep the receipt."
+    },
+    {
+      "id": "ORD-0072",
+      "userId": 6,
+      "status": "cancelled",
+      "currency": "USD",
+      "total": 0,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-008",
+          "name": "Browser stickers",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Tokyo",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0073",
+      "userId": 1,
+      "status": "pending",
+      "currency": "USD",
+      "total": 19.95,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-001",
+          "name": "JSON handbook",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Lima",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0074",
+      "userId": 2,
+      "status": "paid",
+      "currency": "USD",
+      "total": 49.5,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-002",
+          "name": "API workshop",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Taipei",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0075",
+      "userId": 3,
+      "status": "shipped",
+      "currency": "USD",
+      "total": 120,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-003",
+          "name": "Developer notebook",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Montréal",
+        "tracking": "TRK-000075"
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0076",
+      "userId": 4,
+      "status": "cancelled",
+      "currency": "USD",
+      "total": 0,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-004",
+          "name": "Browser stickers",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Dakar",
+        "tracking": null
+      },
+      "note": "Gift wrap\nPlease keep the receipt."
+    },
+    {
+      "id": "ORD-0077",
+      "userId": 5,
+      "status": "pending",
+      "currency": "USD",
+      "total": 19.95,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-005",
+          "name": "JSON handbook",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Berlin",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0078",
+      "userId": 6,
+      "status": "paid",
+      "currency": "USD",
+      "total": 49.5,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-006",
+          "name": "API workshop",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Tokyo",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0079",
+      "userId": 1,
+      "status": "shipped",
+      "currency": "USD",
+      "total": 120,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-007",
+          "name": "Developer notebook",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Lima",
+        "tracking": "TRK-000079"
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0080",
+      "userId": 2,
+      "status": "cancelled",
+      "currency": "USD",
+      "total": 0,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-008",
+          "name": "Browser stickers",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Taipei",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0081",
+      "userId": 3,
+      "status": "pending",
+      "currency": "USD",
+      "total": 19.95,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-001",
+          "name": "JSON handbook",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Montréal",
+        "tracking": null
+      },
+      "note": "Gift wrap\nPlease keep the receipt."
+    },
+    {
+      "id": "ORD-0082",
+      "userId": 4,
+      "status": "paid",
+      "currency": "USD",
+      "total": 49.5,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-002",
+          "name": "API workshop",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Dakar",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0083",
+      "userId": 5,
+      "status": "shipped",
+      "currency": "USD",
+      "total": 120,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-003",
+          "name": "Developer notebook",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Berlin",
+        "tracking": "TRK-000083"
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0084",
+      "userId": 6,
+      "status": "cancelled",
+      "currency": "USD",
+      "total": 0,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-004",
+          "name": "Browser stickers",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Tokyo",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0085",
+      "userId": 1,
+      "status": "pending",
+      "currency": "USD",
+      "total": 19.95,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-005",
+          "name": "JSON handbook",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Lima",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0086",
+      "userId": 2,
+      "status": "paid",
+      "currency": "USD",
+      "total": 49.5,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-006",
+          "name": "API workshop",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Taipei",
+        "tracking": null
+      },
+      "note": "Gift wrap\nPlease keep the receipt."
+    },
+    {
+      "id": "ORD-0087",
+      "userId": 3,
+      "status": "shipped",
+      "currency": "USD",
+      "total": 120,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-007",
+          "name": "Developer notebook",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Montréal",
+        "tracking": "TRK-000087"
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0088",
+      "userId": 4,
+      "status": "cancelled",
+      "currency": "USD",
+      "total": 0,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-008",
+          "name": "Browser stickers",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Dakar",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0089",
+      "userId": 5,
+      "status": "pending",
+      "currency": "USD",
+      "total": 19.95,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-001",
+          "name": "JSON handbook",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Berlin",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0090",
+      "userId": 6,
+      "status": "paid",
+      "currency": "USD",
+      "total": 49.5,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-002",
+          "name": "API workshop",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Tokyo",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0091",
+      "userId": 1,
+      "status": "shipped",
+      "currency": "USD",
+      "total": 120,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-003",
+          "name": "Developer notebook",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Lima",
+        "tracking": "TRK-000091"
+      },
+      "note": "Gift wrap\nPlease keep the receipt."
+    },
+    {
+      "id": "ORD-0092",
+      "userId": 2,
+      "status": "cancelled",
+      "currency": "USD",
+      "total": 0,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-004",
+          "name": "Browser stickers",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Taipei",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0093",
+      "userId": 3,
+      "status": "pending",
+      "currency": "USD",
+      "total": 19.95,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-005",
+          "name": "JSON handbook",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Montréal",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0094",
+      "userId": 4,
+      "status": "paid",
+      "currency": "USD",
+      "total": 49.5,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-006",
+          "name": "API workshop",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Dakar",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0095",
+      "userId": 5,
+      "status": "shipped",
+      "currency": "USD",
+      "total": 120,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-007",
+          "name": "Developer notebook",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Berlin",
+        "tracking": "TRK-000095"
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0096",
+      "userId": 6,
+      "status": "cancelled",
+      "currency": "USD",
+      "total": 0,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-008",
+          "name": "Browser stickers",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Tokyo",
+        "tracking": null
+      },
+      "note": "Gift wrap\nPlease keep the receipt."
+    },
+    {
+      "id": "ORD-0097",
+      "userId": 1,
+      "status": "pending",
+      "currency": "USD",
+      "total": 19.95,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-001",
+          "name": "JSON handbook",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Lima",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0098",
+      "userId": 2,
+      "status": "paid",
+      "currency": "USD",
+      "total": 49.5,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-002",
+          "name": "API workshop",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Taipei",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0099",
+      "userId": 3,
+      "status": "shipped",
+      "currency": "USD",
+      "total": 120,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-003",
+          "name": "Developer notebook",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Montréal",
+        "tracking": "TRK-000099"
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0100",
+      "userId": 4,
+      "status": "cancelled",
+      "currency": "USD",
+      "total": 0,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-004",
+          "name": "Browser stickers",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Dakar",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0101",
+      "userId": 5,
+      "status": "pending",
+      "currency": "USD",
+      "total": 19.95,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-005",
+          "name": "JSON handbook",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Berlin",
+        "tracking": null
+      },
+      "note": "Gift wrap\nPlease keep the receipt."
+    },
+    {
+      "id": "ORD-0102",
+      "userId": 6,
+      "status": "paid",
+      "currency": "USD",
+      "total": 49.5,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-006",
+          "name": "API workshop",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Tokyo",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0103",
+      "userId": 1,
+      "status": "shipped",
+      "currency": "USD",
+      "total": 120,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-007",
+          "name": "Developer notebook",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Lima",
+        "tracking": "TRK-000103"
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0104",
+      "userId": 2,
+      "status": "cancelled",
+      "currency": "USD",
+      "total": 0,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-008",
+          "name": "Browser stickers",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Taipei",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0105",
+      "userId": 3,
+      "status": "pending",
+      "currency": "USD",
+      "total": 19.95,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-001",
+          "name": "JSON handbook",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Montréal",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0106",
+      "userId": 4,
+      "status": "paid",
+      "currency": "USD",
+      "total": 49.5,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-002",
+          "name": "API workshop",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Dakar",
+        "tracking": null
+      },
+      "note": "Gift wrap\nPlease keep the receipt."
+    },
+    {
+      "id": "ORD-0107",
+      "userId": 5,
+      "status": "shipped",
+      "currency": "USD",
+      "total": 120,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-003",
+          "name": "Developer notebook",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Berlin",
+        "tracking": "TRK-000107"
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0108",
+      "userId": 6,
+      "status": "cancelled",
+      "currency": "USD",
+      "total": 0,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-004",
+          "name": "Browser stickers",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Tokyo",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0109",
+      "userId": 1,
+      "status": "pending",
+      "currency": "USD",
+      "total": 19.95,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-005",
+          "name": "JSON handbook",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Lima",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0110",
+      "userId": 2,
+      "status": "paid",
+      "currency": "USD",
+      "total": 49.5,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-006",
+          "name": "API workshop",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Taipei",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0111",
+      "userId": 3,
+      "status": "shipped",
+      "currency": "USD",
+      "total": 120,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-007",
+          "name": "Developer notebook",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Montréal",
+        "tracking": "TRK-000111"
+      },
+      "note": "Gift wrap\nPlease keep the receipt."
+    },
+    {
+      "id": "ORD-0112",
+      "userId": 4,
+      "status": "cancelled",
+      "currency": "USD",
+      "total": 0,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-008",
+          "name": "Browser stickers",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Dakar",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0113",
+      "userId": 5,
+      "status": "pending",
+      "currency": "USD",
+      "total": 19.95,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-001",
+          "name": "JSON handbook",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Berlin",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0114",
+      "userId": 6,
+      "status": "paid",
+      "currency": "USD",
+      "total": 49.5,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-002",
+          "name": "API workshop",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Tokyo",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0115",
+      "userId": 1,
+      "status": "shipped",
+      "currency": "USD",
+      "total": 120,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-003",
+          "name": "Developer notebook",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Lima",
+        "tracking": "TRK-000115"
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0116",
+      "userId": 2,
+      "status": "cancelled",
+      "currency": "USD",
+      "total": 0,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-004",
+          "name": "Browser stickers",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Taipei",
+        "tracking": null
+      },
+      "note": "Gift wrap\nPlease keep the receipt."
+    },
+    {
+      "id": "ORD-0117",
+      "userId": 3,
+      "status": "pending",
+      "currency": "USD",
+      "total": 19.95,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-005",
+          "name": "JSON handbook",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Montréal",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0118",
+      "userId": 4,
+      "status": "paid",
+      "currency": "USD",
+      "total": 49.5,
+      "discount": 5,
+      "items": [
+        {
+          "sku": "DEMO-006",
+          "name": "API workshop",
+          "quantity": 1
+        }
+      ],
+      "delivery": {
+        "city": "Dakar",
+        "tracking": null
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0119",
+      "userId": 5,
+      "status": "shipped",
+      "currency": "USD",
+      "total": 120,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-007",
+          "name": "Developer notebook",
+          "quantity": 2
+        }
+      ],
+      "delivery": {
+        "city": "Berlin",
+        "tracking": "TRK-000119"
+      },
+      "note": ""
+    },
+    {
+      "id": "ORD-0120",
+      "userId": 6,
+      "status": "cancelled",
+      "currency": "USD",
+      "total": 0,
+      "discount": null,
+      "items": [
+        {
+          "sku": "DEMO-008",
+          "name": "Browser stickers",
+          "quantity": 3
+        }
+      ],
+      "delivery": {
+        "city": "Tokyo",
+        "tracking": null
+      },
+      "note": "final-page-demo"
+    }
+  ],
+  "settings": {
+    "theme": "auto",
+    "features": {
+      "search": true,
+      "tables": true,
+      "editing": true,
+      "analytics": false
+    },
+    "limits": {
+      "maxRetries": 3,
+      "timeoutMs": 30000
+    },
+    "optionalMessage": null,
+    "emptyObject": {},
+    "emptyArray": []
+  },
+  "types": {
+    "string": "Hello, JSON!",
+    "number": 42,
+    "boolean": false,
+    "null": null,
+    "mixedArray": [
+      "text",
+      42,
+      true,
+      null,
+      {
+        "nested": "value"
+      },
+      [
+        "inner",
+        2
+      ]
+    ],
+    "matrix": [
+      [
+        1,
+        2,
+        3
+      ],
+      [
+        4,
+        5,
+        6
+      ],
+      [
+        7,
+        8,
+        9
+      ]
+    ]
+  },
+  "precision": {
+    "largeInteger": 900719925474099312345,
+    "longDecimal": 0.12345678901234567890123456789,
+    "trailingZeros": 19.9500,
+    "scientificNotation": 6.022e23,
+    "negativeZero": -0
+  },
+  "strings": {
+    "quotes": "She said: \"Keep the JSON readable.\"",
+    "backslash": "C:\\demo\\response.json",
+    "multiline": "First line\nSecond line\tIndented text",
+    "unicode": "Español · 日本語 · العربية · 🧑‍💻",
+    "htmlAsText": "<strong>This is a string, not rendered HTML.</strong>",
+    "empty": "",
+    "nestedJson": "{\"event\":\"demo.created\",\"payload\":{\"id\":9007199254740993,\"active\":true,\"tags\":[\"json\",\"nested\"]}}"
+  },
+  "specialKeys": {
+    "key with spaces": "Space in a key",
+    "a.b": "Dot in a key",
+    "a/b": "Slash in a key",
+    "a~b": "Tilde in a key",
+    "": "Empty key",
+    "0": "Numeric-looking key"
+  },
+  "deeplyNested": {
+    "level1": {
+      "level2": {
+        "level3": {
+          "level4": {
+            "message": "You found the deep value!",
+            "enabled": true
+          }
+        }
+      }
+    }
+  }
+}
