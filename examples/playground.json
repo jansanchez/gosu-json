@@ -3,7 +3,7 @@
     "title": "GOSU JSON playground",
     "description": "Fictional data for exploring JSON. No accounts, credentials or real API connections.",
     "startHere": "Open examples/README.md for a guided tour.",
-    "version": "0.4.2",
+    "exampleVersion": "1.0.0",
     "recordCounts": {
       "users": 6,
       "orders": 120

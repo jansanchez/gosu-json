@@ -43,7 +43,7 @@ Loading a URL connects to the chosen endpoint and may follow its redirects; that
 
 ## Try it and help it improve
 
-**Version 0.4.2 — preview.** Packages are prepared for Chrome/Brave, Edge and Firefox. Safari resources and an Apple packaging workflow are included, with native packaging/signing and actual Safari validation still pending. Desktop support must be verified in each browser before a stable store release; mobile support is not claimed.
+**Preview release.** See `package.json` for the current version. Packages are prepared for Chrome/Brave, Edge and Firefox. Safari resources and an Apple packaging workflow are included, with native packaging/signing and actual Safari validation still pending. Desktop support must be verified in each browser before a stable store release; mobile support is not claimed.
 
 Documents are limited to 10 MiB and 100,000 nodes. Strict JSON is supported; JSON Schema and other formats remain future work. Viewer requests omit session cookies and authentication credentials.
 

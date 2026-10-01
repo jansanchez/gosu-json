@@ -1,6 +1,6 @@
 # Privacy
 
-This describes version 0.4.2, not an independent audit or a guarantee about future releases.
+This policy describes the source in this repository. It is not an independent audit or a guarantee about future releases. See `package.json` for the current version.
 
 GOSU JSON does not upload documents to its own services, collect analytics or use remote code. Explicit URL loading and direct viewer links make GET requests to the endpoint you specify. Documents stay in memory; theme and per-site opening preferences are stored locally. Clipboard reads happen only when you click Paste, and writes happen only when you click a copy action.
 
