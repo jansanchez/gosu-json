@@ -630,3 +630,24 @@ body:has(#openingPrompt:not([hidden])) main {
   outline: 2px solid var(--accent);
   outline-offset: -2px;
 }
+
+/* A search result is actionable across its path, value and highlighted matches.
+   Pointer styling does not disable native text selection or copying. */
+.search-result,
+.search-result * {
+  cursor: pointer;
+}
+
+/* Search rows shrink to their content count instead of the tree's minimum. */
+#results .virtual-viewport {
+  min-height: 0;
+}
+#results {
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+}
+.table-exports {
+  display: flex;
+  gap: 8px;
+  margin: 8px 0;
+}

@@ -36,3 +36,18 @@ test("worker invalidates the cache on changed source and reports regex errors", 
   });
   assert.match(outputs.pop().error, /Invalid regular expression/);
 });
+
+test("worker exports the selected nested array and rejects stale or non-array nodes", () => {
+  const source = '{"users":[{"name":"Ana"},{"name":"Maya"}],"other":[1]}';
+  const nodeId = source.indexOf("[");
+  self.onmessage({
+    data: { id: 6, op: "export-table", source, nodeId, kind: "csv" },
+  });
+  const result = outputs.pop().result;
+  assert.equal(result.rows, 2);
+  assert(result.text.includes('"Maya"'));
+  self.onmessage({
+    data: { id: 7, op: "export-table", source, nodeId: 0, kind: "csv" },
+  });
+  assert.match(outputs.pop().error, /Select an array/);
+});

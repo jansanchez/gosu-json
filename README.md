@@ -59,6 +59,10 @@ You can also drag a file into the workspace. **Restore original** restores the e
 
 **Edits affect your local copy. They do not update the original service.** Download anything you want to keep before closing or reloading: documents are not autosaved.
 
+## Try the complete example
+
+Open [playground.json](examples/playground.json) to explore 6 fictional users, 120 orders, nested JSON, Unicode and precise numbers. Follow the [five-minute guided tour](examples/README.md) to try every view, regex search, editing and a comparison file with five intentional changes. No API or account is needed.
+
 ## Choose how to explore
 
 The left panel is your editable source. The view buttons on the right change the right panel.
@@ -73,6 +77,14 @@ The left panel is your editable source. The view buttons on the right change the
 Copy a value, exact JSON or its path. A path identifies where a value lives; JSON Pointer and JSONPath copy formats are available. Executable JSONPath queries are not implemented yet.
 
 Select a string containing another JSON document and use **Open nested JSON** to inspect it in a separate workspace.
+
+## Export a table
+
+Select an array in Tree, then choose **Table**. Use **Export CSV** or **Excel (.xml)** above the table. Both export **all rows of that array**, including rows on other pages, with the same first 50 data columns and the row index shown in the table. Search highlights do not filter the export.
+
+CSV uses UTF-8, preserves commas, quotes and line breaks, and stores nested objects/arrays as compact JSON text. Formula-like text is prefixed with an apostrophe for safer spreadsheet opening. CSV carries no column types: when importing it in Excel, select Text for columns containing long IDs or exact decimals to prevent automatic conversion.
+
+The basic Excel option creates an **XML Spreadsheet 2003** file, not `.xlsx`. All cells are text, preserving IDs, exact number spellings and formula-like values. Open the `.xml` file in Excel and save as `.xlsx` if needed. It supports up to 65,535 data rows and 32,767 characters per cell; use CSV for larger data. Exports are generated locally in the worker and capped at 50 MiB. Exporting does not modify your JSON.
 
 ## Open JSON from a URL
 

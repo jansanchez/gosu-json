@@ -53,3 +53,20 @@ The extension remains at 0.4.2. Added Makefile, a Node 24.21.0 development Docke
 - All 32 unit tests passed; all browser resources built; syntax/permission and formatting checks passed; release ZIPs generated.
 - `make help`, Docker/Podman command dry runs, and the missing-engine failure message were checked.
 - Docker and Podman are unavailable in the validation environment. The container image was not built and `make all` was not executed inside a real container. Verify it on a machine with either engine installed.
+
+## 0.4.2 node selection and search cursor correction (2026-10-01)
+
+Compared the supplied source archive with this version: the src/ files matched.
+
+- Reproduced the selection defect with a regression test: without the focus correction, a selected search value produced an empty native selection instead of its complete JSON source.
+- Selecting a tree node now focuses the source editor before applying its full parsed range. Expanding/collapsing an object or array also selects its range. Search results use a pointer cursor across the path, value and highlighted match while retaining native text selection.
+- Chromium UI tests verify full object/array selection, keyboard copying of an entire 30,000-element array despite editor virtualization, result cursors, double-click/copy in search results and both panels, Table and reveal at index 29,999.
+- All 32 unit tests passed. Browser packages built; syntax/permission checks passed. These tests use a served workspace in headless Chromium on Linux; native Windows/macOS extension execution was not exercised.
+
+## 0.4.2 table export and compact navigation (2026-10-01)
+
+- Added worker-based CSV and basic Excel XML export for the full displayed array, not only the current page. Both share the table's first 50 data columns plus row index. No new dependencies or permissions.
+- 38 unit tests passed: CSV quoting/Unicode, exact numeric spellings, nested values, heterogeneous rows, duplicate columns, formula-like text, Excel XML encoding and practical limits, and selected-array worker dispatch.
+- Chromium UI tests passed: download and inspect all 120 rows as CSV and Excel XML, parse downloaded XML without errors, verify source selection at approximately three line heights below the scroller top, and verify a one-result viewport stays under 48 pixels. Existing native copy (including a 30,000-item array), table navigation, search/regex/virtual reveal, editing, themes and endpoint checks also passed.
+- XML is Spreadsheet 2003 format, not XLSX. All cells are text; native Excel import/opening was not tested. CSV stores exact text but spreadsheet applications may auto-convert numeric columns. Export caps: 50 MiB total; Excel XML 65,535 data rows and 32,767 characters per cell.
+- CodeMirror scroll requests use top alignment with a three-line margin. Near the start or end of the document the available scroll range may limit context. Headless Chromium/Linux was used; other native browsers/platforms were not exercised here.

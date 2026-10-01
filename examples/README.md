@@ -12,7 +12,7 @@ Download these files or find them in your project’s `examples/` directory:
 
 1. Click the extension icon, choose **New workspace**, then drag `playground.json` into the workspace. It opens formatted automatically. Check the colors for keys, strings, numbers, booleans and `null`.
 2. In **Tree**, expand `users`, then the first user and `profile`. Explore `deeplyNested` too. Select a value and try copying its value, JSON Pointer or JSONPath. Paths identify locations; they are not executable queries in this version.
-3. Select the **`orders` array itself**, then choose **Table**. Compare status and totals across rows. There are 120 orders and 100 rows per page, so use the pagination controls to inspect the last 20. Objects such as `items` are better explored in Tree.
+3. Select the **`orders` array itself**, then choose **Table**. Compare status and totals across rows. There are 120 orders and 100 rows per page, so use the pagination controls to inspect the last 20. Objects such as `items` are better explored in Tree. Try **Export CSV** and **Excel (.xml)**: both files include all 120 orders, even when you are viewing only the first page.
 4. Search **Values** for `final-page-demo`. Click the result: the tree should expand to `orders[119].note` and highlight it. Try ordinary searches for `Lima`, `pending` and `900719925474099312345`.
 5. Turn on **Regex** and search **Values** using one of the expressions below. Turn Regex off when returning to ordinary searches.
 6. Switch to **Code**, select some text and copy it with Ctrl+C (Cmd+C on macOS). Try selecting and copying text from the left editor too. Make edits in the left panel; Code on the right is a reading view.

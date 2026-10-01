@@ -106,7 +106,10 @@ export function createEditor(parent, onChange, { readOnly = false } = {}) {
     setSelectionRange(from, to) {
       view.dispatch({
         selection: { anchor: from, head: to },
-        effects: EditorView.scrollIntoView(from, { y: "center" }),
+        effects: EditorView.scrollIntoView(from, {
+          y: "start",
+          yMargin: view.defaultLineHeight * 3,
+        }),
       });
     },
     reset(value) {

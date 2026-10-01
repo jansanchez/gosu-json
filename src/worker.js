@@ -1,4 +1,5 @@
 import { parse, format, diff } from "./core/json.js";
+import { exportTable } from "./core/table-export.js";
 import { searchNodes } from "./core/search.js";
 let cachedSource = null,
   cachedParsed = null;
@@ -19,7 +20,20 @@ self.onmessage = ({ data }) => {
       result = format(data.source, parsed.root, data.indent);
     else if (data.op === "search")
       result = searchNodes(data.source, parsed.root, data.query, data.options);
-    else if (data.op === "diff")
+    else if (data.op === "export-table") {
+      const stack = [parsed.root];
+      let node;
+      while (stack.length) {
+        const candidate = stack.pop();
+        if (candidate.start === data.nodeId) {
+          node = candidate;
+          break;
+        }
+        if (candidate.children)
+          for (const child of candidate.children) stack.push(child);
+      }
+      result = exportTable(data.source, node, data.kind);
+    } else if (data.op === "diff")
       result = diff(
         data.source,
         parsed.root,

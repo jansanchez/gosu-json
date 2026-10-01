@@ -15,6 +15,7 @@ import {
   endpointLink,
   readEndpoint,
 } from "./core/endpoint.js";
+import { tableColumns } from "./core/table-export.js";
 import { api, send } from "./platform.js";
 const $ = (s) => document.querySelector(s),
   view = $("#view"),
@@ -133,6 +134,7 @@ function select(node) {
   selected = node;
   $("#path").textContent = pointer(node.path) || "(root)";
   $("#path").title = jsonPath(node.path);
+  editor.focus();
   editor.setSelectionRange(node.start, node.end);
   document.querySelectorAll("[data-node-id]").forEach((el) => {
     const same = Number(el.dataset.nodeId) === node.start;
@@ -265,6 +267,7 @@ function treeRow({ node, depth }) {
       renderView();
       treeList.element.scrollTop = old;
       treeList.refresh();
+      select(node);
     },
     "tree-toggle",
   );
@@ -299,13 +302,8 @@ function table(node) {
     );
     return;
   }
-  const keys = [
-    ...new Set(
-      node.children.flatMap((n) =>
-        n.type === "object" ? n.children.map((c) => c.key) : ["value"],
-      ),
-    ),
-  ].slice(0, 50);
+  const tableSource = source;
+  const keys = tableColumns(node);
   view.append(
     text(
       "p",
@@ -313,6 +311,38 @@ function table(node) {
       "muted",
     ),
   );
+  const exports = document.createElement("div");
+  exports.className = "table-exports";
+  for (const [kind, label] of [
+    ["csv", "Export CSV"],
+    ["excel", "Excel (.xml)"],
+  ]) {
+    const control = button(label, async () => {
+      control.disabled = true;
+      try {
+        const result = await task("export-table", {
+          nodeId: node.start,
+          source: tableSource,
+          kind,
+        });
+        const name =
+          ($("#name").value.replace(/\.json$/i, "") || "document") + "-table";
+        downloadFile(result.text, result.mime, name + "." + result.extension);
+        message(
+          `Exported ${result.rows.toLocaleString()} rows · ${result.columns} data columns · ${kind === "csv" ? "CSV" : "Excel XML"}.`,
+        );
+      } catch (error) {
+        message(error.message, true);
+      } finally {
+        control.disabled = false;
+      }
+    });
+    control.dataset.export = kind;
+    control.title =
+      "Export all rows of this array, including other pages; same first 50 data columns as the table.";
+    exports.append(control);
+  }
+  view.append(exports);
   const tbl = document.createElement("table"),
     head = document.createElement("tr");
   head.append(text("th", "#"));
@@ -498,19 +528,21 @@ action("#original", async () => {
     return;
   await setSource(original);
 });
-action("#download", () => {
-  const blob = new Blob([editor.value], { type: "application/json" }),
-    url = URL.createObjectURL(blob),
-    a = document.createElement("a");
-  a.href = url;
-  a.download =
-    ($("#name").value.replace(/[^a-zA-Z0-9._-]/g, "_") || "document").replace(
-      /\.json$/,
-      "",
-    ) + ".json";
-  a.click();
+function downloadFile(content, mime, filename) {
+  const url = URL.createObjectURL(new Blob([content], { type: mime }));
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename.replace(/[^a-zA-Z0-9._-]/g, "_");
+  link.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
-});
+}
+action("#download", () =>
+  downloadFile(
+    editor.value,
+    "application/json",
+    ($("#name").value.replace(/\.json$/i, "") || "document") + ".json",
+  ),
+);
 action("#compare", () => $("#other").click());
 $("#other").onchange = async () => {
   try {
