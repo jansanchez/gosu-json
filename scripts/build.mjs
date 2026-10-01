@@ -1,5 +1,8 @@
 import { build } from "esbuild";
 import { cp, mkdir, writeFile, rm, readdir, readFile } from "node:fs/promises";
+
+const FIREFOX_MIN_VERSION = "142.0";
+
 const { version } = JSON.parse(
   await readFile(new URL("../package.json", import.meta.url), "utf8"),
 );
@@ -35,7 +38,13 @@ for (const browser of ["chromium", "edge", "firefox", "safari"]) {
     bundle: true,
     format: "esm",
     platform: "browser",
-    target: browser === "safari" ? ["safari17.4"] : ["chrome128", "firefox128"],
+    target:
+      browser === "safari"
+        ? ["safari17.4"]
+        : browser === "firefox"
+          ? [`firefox${FIREFOX_MIN_VERSION}`]
+          : ["chrome128"],
+
     minify: true,
     legalComments: "eof",
   });
@@ -86,7 +95,7 @@ for (const browser of ["chromium", "edge", "firefox", "safari"]) {
     manifest.browser_specific_settings = {
       gecko: {
         id: "json-atelier@local.invalid",
-        strict_min_version: "128.0",
+        strict_min_version: FIREFOX_MIN_VERSION,
         data_collection_permissions: { required: ["none"] },
       },
     };
