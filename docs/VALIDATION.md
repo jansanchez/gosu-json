@@ -70,3 +70,7 @@ Compared the supplied source archive with this version: the src/ files matched.
 - Chromium UI tests passed: download and inspect all 120 rows as CSV and Excel XML, parse downloaded XML without errors, verify source selection at approximately three line heights below the scroller top, and verify a one-result viewport stays under 48 pixels. Existing native copy (including a 30,000-item array), table navigation, search/regex/virtual reveal, editing, themes and endpoint checks also passed.
 - XML is Spreadsheet 2003 format, not XLSX. All cells are text; native Excel import/opening was not tested. CSV stores exact text but spreadsheet applications may auto-convert numeric columns. Export caps: 50 MiB total; Excel XML 65,535 data rows and 32,767 characters per cell.
 - CodeMirror scroll requests use top alignment with a three-line margin. Near the start or end of the document the available scroll range may limit context. Headless Chromium/Linux was used; other native browsers/platforms were not exercised here.
+
+## 0.4.5 centralized version (2026-10-01)
+
+Build manifests and release filenames read the version from package.json. Make synchronizes the npm lockfile inside the container before installing. All 38 unit tests, build, syntax/permission checks and formatting checks passed. The four packaged manifests were verified as 0.4.5; an isolated stale-build fixture was rejected before archives were written. Docker/Podman are unavailable in the validation environment, so make all itself was not executed here. make help was checked.

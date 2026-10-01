@@ -75,7 +75,7 @@ The Chromium workspace smoke test cannot establish Safari extension API compatib
 
 Apple also documents web-based packaging in App Store Connect without a local Mac/Xcode, requiring Developer Program membership. That route has not been executed here.
 
-`gosu-json-safari-0.4.2.zip` contains web extension resources only. It is **not** an `.app`, signed installer or App Store release. No Apple account, signing credentials or review approval is included in this repository.
+`gosu-json-safari-0.4.5.zip` contains web extension resources only. It is **not** an `.app`, signed installer or App Store release. No Apple account, signing credentials or review approval is included in this repository.
 
 Official references:
 

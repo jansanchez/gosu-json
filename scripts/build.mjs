@@ -1,9 +1,12 @@
 import { build } from "esbuild";
-import { cp, mkdir, writeFile, rm, readdir, access } from "node:fs/promises";
+import { cp, mkdir, writeFile, rm, readdir, readFile } from "node:fs/promises";
+const { version } = JSON.parse(
+  await readFile(new URL("../package.json", import.meta.url), "utf8"),
+);
 const common = {
   manifest_version: 3,
   name: "GOSU JSON",
-  version: "0.4.2",
+  version,
   description:
     "Format, explore, search and edit JSON in your browser. Compare files, inspect API responses and preserve large numbers.",
   permissions: ["activeTab", "scripting", "storage", "contextMenus"],

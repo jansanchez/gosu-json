@@ -12,10 +12,18 @@ async function walk(dir) {
     }
   }
 }
+const { version } = JSON.parse(await readFile("package.json", "utf8"));
+const lock = JSON.parse(await readFile("package-lock.json", "utf8"));
+if (lock.version !== version || lock.packages[""].version !== version)
+  throw new Error(
+    "Run make all to synchronize package-lock.json with package.json",
+  );
 await walk("src");
 await walk("scripts");
 for (const browser of ["chromium", "edge", "firefox", "safari"]) {
   const m = JSON.parse(await readFile(`dist/${browser}/manifest.json`));
+  if (m.version !== version)
+    throw new Error(`Stale ${browser} manifest version`);
   if (m.content_scripts?.[0]?.js?.[0] !== "capture.js")
     throw new Error("Missing MIME detector");
   if (

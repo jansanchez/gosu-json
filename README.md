@@ -6,7 +6,7 @@ A browser extension that makes JSON easier to read, search, edit and compare. Im
 
 JSON is a text format applications use to exchange data. You do not need to be an expert: paste a response, drop a file or open an endpoint URL to get started.
 
-**Version 0.4.2 — preview.** Packages are included for Chrome/Brave, Edge and Firefox, plus Safari web extension resources. Safari requires Apple packaging and signing. Native browser installation and permissions still need the checks in [TESTING.md](docs/TESTING.md); Safari runtime support is not yet verified.
+**Version 0.4.5 — preview.** Packages are included for Chrome/Brave, Edge and Firefox, plus Safari web extension resources. Safari requires Apple packaging and signing. Native browser installation and permissions still need the checks in [TESTING.md](docs/TESTING.md); Safari runtime support is not yet verified.
 
 [Product presentation](PRESENTATION.md) · [Privacy](PRIVACY.md) · [Publication guide](docs/PUBLISHING.md)
 
@@ -181,7 +181,7 @@ make all ENGINE=podman
 
 If both engines are installed, Docker is selected by default. Select Podman explicitly when you prefer it or Docker is not running. Docker must be usable by your account; do not run `sudo make all`. The container runs with your user/group ID so generated files are not owned by root. If your existing project files were created by root, correct their ownership before running the workflow.
 
-To check tool versions, run `make versions`. For individual commands, see `make help`. After `make all`, load `dist/chromium` using your browser's **Load unpacked** action or upload `releases/gosu-json-chromium-0.4.2.zip` to Chrome Web Store.
+To check tool versions, run `make versions`. For individual commands, see `make help`. After `make all`, load `dist/chromium` using your browser's **Load unpacked** action or upload `releases/gosu-json-chromium-0.4.5.zip` to Chrome Web Store.
 
 ### Without containers (optional)
 
@@ -205,3 +205,7 @@ See [architecture](docs/ARCHITECTURE.md), [validation](docs/VALIDATION.md), [man
 ---
 
 If GOSU JSON helps you, you can optionally [support its development via PayPal](https://www.paypal.com/paypalme/remasterizado). Thank you for your support.
+
+### Updating the release version
+
+Change only `version` in `package.json`, then run `make all`. The container synchronizes the lockfile, validates the project and builds all browser manifests and versioned ZIP files. `make package` rejects stale builds. No host Node installation is required.
