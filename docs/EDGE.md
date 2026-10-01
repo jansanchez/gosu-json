@@ -1,6 +1,6 @@
 # Microsoft Edge desktop
 
-GOSU JSON now generates a dedicated `dist/edge` folder and `releases/gosu-json-edge-0.4.5.zip`. Edge uses Chromium extension APIs, so this target shares the Chrome implementation: Manifest V3, a background service worker, the same editor and the same permissions. It adds no tracking, dependencies or native components.
+GOSU JSON now generates a dedicated `dist/edge` folder and `releases/gosu-json-edge-0.4.8.zip`. Edge uses Chromium extension APIs, so this target shares the Chrome implementation: Manifest V3, a background service worker, the same editor and the same permissions. It adds no tracking, dependencies or native components.
 
 Build and manifest checks pass. **Installation, permission prompts and runtime behavior in actual Edge have not yet been validated.** The Chromium UI smoke test is not an Edge installation test. Mobile Edge support is not claimed.
 
@@ -23,7 +23,7 @@ Use the checks in [TESTING.md](TESTING.md): paste/file import, formatting, editi
 ## Publish in Microsoft Edge Add-ons
 
 1. Register as an Edge extension developer in [Microsoft Partner Center](https://partner.microsoft.com/dashboard). Complete the account/enrollment verification required by Microsoft.
-2. Build, check and package the release. Upload `gosu-json-edge-0.4.5.zip`, not the source ZIP. The package must have `manifest.json` at its root.
+2. Build, check and package the release. Upload `gosu-json-edge-0.4.8.zip`, not the source ZIP. The package must have `manifest.json` at its root.
 3. Create the extension listing: name, description, supported language(s), icon, screenshots, support and website details.
 4. Complete privacy disclosures and provide a public privacy-policy URL once the repository is published. Explain broad HTTP/HTTPS access for JSON detection and user-requested endpoint loading, local preferences and the single purpose of the extension.
 5. Submit for certification and address feedback. After approval/publication, users install from Microsoft Edge Add-ons without Developer mode.

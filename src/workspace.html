@@ -56,6 +56,38 @@
       </button>
     </nav>
     <section
+      id="accessPrompt"
+      class="opening-prompt"
+      hidden
+      aria-label="Site access"
+    >
+      <div>
+        <strong>Allow access to display this JSON</strong>
+        <p id="accessOrigin"></p>
+        <p id="accessStatus" role="status" aria-live="polite">
+          Both panels stay empty until you allow access. This button makes a new
+          GET request without cookies or authentication headers.
+        </p>
+      </div>
+      <button id="allowAccess">Allow and load JSON</button
+      ><button id="declineAccess">Not now</button>
+    </section>
+    <section
+      id="welcomePrompt"
+      class="opening-prompt"
+      hidden
+      aria-label="Welcome"
+    >
+      <div>
+        <strong>Welcome to GOSU JSON</strong>
+        <p>
+          Try a fictional JSON example below. To inspect an endpoint, open its
+          tab and click the GOSU JSON toolbar icon. Approve that site to display
+          its response.
+        </p>
+      </div>
+    </section>
+    <section
       id="openingPrompt"
       class="opening-prompt"
       hidden

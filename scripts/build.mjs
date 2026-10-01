@@ -70,6 +70,18 @@ for (const browser of ["chromium", "edge", "firefox", "safari"]) {
     ? { service_worker: "background.js" }
     : { scripts: ["background.js"] };
   if (browser === "safari") manifest.background.persistent = false;
+  if (browser === "firefox") {
+    delete manifest.host_permissions;
+    delete manifest.content_scripts;
+    manifest.optional_host_permissions = ["http://*/*", "https://*/*"];
+    manifest.action = { default_title: "Open in GOSU JSON" };
+    manifest.permissions.push(
+      "webRequest",
+      "webRequestBlocking",
+      "webRequestFilterResponse",
+    );
+    manifest.background.scripts = ["firefox-response.js", "background.js"];
+  }
   if (browser === "firefox")
     manifest.browser_specific_settings = {
       gecko: {

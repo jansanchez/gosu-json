@@ -24,7 +24,23 @@ for (const browser of ["chromium", "edge", "firefox", "safari"]) {
   const m = JSON.parse(await readFile(`dist/${browser}/manifest.json`));
   if (m.version !== version)
     throw new Error(`Stale ${browser} manifest version`);
-  if (m.content_scripts?.[0]?.js?.[0] !== "capture.js")
+  if (
+    browser === "firefox" &&
+    (m.host_permissions?.length ||
+      m.content_scripts?.length ||
+      m.action.default_popup ||
+      m.optional_host_permissions?.join() !== "http://*/*,https://*/*")
+  )
+    throw new Error("Invalid Firefox optional-access configuration");
+  if (
+    browser !== "firefox" &&
+    (m.host_permissions?.join() !== "http://*/*,https://*/*" ||
+      m.optional_host_permissions?.length)
+  )
+    throw new Error(
+      "Required site access must remain unchanged for this browser",
+    );
+  if (browser !== "firefox" && m.content_scripts?.[0]?.js?.[0] !== "capture.js")
     throw new Error("Missing MIME detector");
   if (
     browser === "safari" &&
@@ -40,6 +56,21 @@ for (const browser of ["chromium", "edge", "firefox", "safari"]) {
       m.browser_specific_settings)
   )
     throw new Error("Invalid Chromium/Edge background configuration");
+  if (
+    browser === "firefox" &&
+    (m.background.scripts?.join() !== "firefox-response.js,background.js" ||
+      !["webRequest", "webRequestBlocking", "webRequestFilterResponse"].every(
+        (p) => m.permissions.includes(p),
+      ))
+  )
+    throw new Error("Missing native Firefox response capture");
+  if (
+    browser !== "firefox" &&
+    m.permissions.some((p) => p.startsWith("webRequest"))
+  )
+    throw new Error(
+      "Firefox response permissions must not affect other browsers",
+    );
   if (m.permissions.includes("unlimitedStorage"))
     throw new Error("Unexpected storage permission");
 }

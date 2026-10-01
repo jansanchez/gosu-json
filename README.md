@@ -6,7 +6,7 @@ A browser extension that makes JSON easier to read, search, edit and compare. Im
 
 JSON is a text format applications use to exchange data. You do not need to be an expert: paste a response, drop a file or open an endpoint URL to get started.
 
-**Version 0.4.5 — preview.** Packages are included for Chrome/Brave, Edge and Firefox, plus Safari web extension resources. Safari requires Apple packaging and signing. Native browser installation and permissions still need the checks in [TESTING.md](docs/TESTING.md); Safari runtime support is not yet verified.
+**Version 0.4.8 — preview.** Packages are included for Chrome/Brave, Edge and Firefox, plus Safari web extension resources. Safari requires Apple packaging and signing. Native browser installation and permissions still need the checks in [TESTING.md](docs/TESTING.md); Safari runtime support is not yet verified.
 
 [Product presentation](PRESENTATION.md) · [Privacy](PRIVACY.md) · [Publication guide](docs/PUBLISHING.md)
 
@@ -90,10 +90,10 @@ The basic Excel option creates an **XML Spreadsheet 2003** file, not `.xlsx`. Al
 
 An **endpoint** is a service URL that returns data. There are two ways to open it:
 
-- **A response already open in your browser:** when the server declares a JSON document, GOSU JSON opens its existing contents in a separate tab without fetching them again. A banner offers **Always on this site** or **Only when I choose**. Until you decide, that question remains visible on future imports. Change your choice from the extension popup.
+- **A response already open in your browser:** in Chrome/Brave and Edge, when the server declares a JSON document, GOSU JSON opens its existing contents in a separate tab without fetching them again. A banner offers **Always on this site** or **Only when I choose**. Until you decide, that question remains visible on future imports. Change your choice from the extension popup.
 - **Inside the workspace:** paste a URL into **Endpoint** and click **Open URL**. This makes a new request. **Refresh** requests it again.
 
-If automatic capture is blocked, try **Open current JSON page**, copy/paste or file import. Native JSON viewers can interfere, particularly in Firefox. Ordinary HTML pages do not trigger automatic opening; plain-text page import requires a manual action.
+If automatic capture is blocked, try **Open current JSON page**, copy/paste or file import. Firefox uses a response stream for approved automatic imports to avoid native-viewer isolation. Ordinary HTML pages do not trigger automatic opening; plain-text page import requires a manual action.
 
 **Copy viewer link** creates a bookmarkable link that opens the viewer and requests that endpoint. The link belongs to your installed extension; it may not work in another profile/browser/computer. Query parameters are preserved. Never share a link containing private tokens.
 
@@ -125,7 +125,7 @@ This version has no ads, affiliate scripts, telemetry, geolocation requests or r
 
 **Opening or refreshing a URL uses the network.** The endpoint and its redirects receive the request and can see your IP. Viewer links include the endpoint URL; browser bookmarks/history may retain them.
 
-Automatic JSON detection needs broad HTTP/HTTPS site access. The current content script checks document type and exits on ordinary non-JSON pages. Choosing manual opening does not revoke that permission. You can restrict website access in browser settings, but automatic detection may stop working.
+In Chrome/Brave, Edge and Safari resources, automatic JSON detection uses required HTTP/HTTPS site access. The current content script checks document type and exits on ordinary non-JSON pages. Choosing manual opening does not revoke that permission. You can restrict website access in browser settings, but automatic detection may stop working.
 
 Only the theme and per-site opening preferences are saved locally. Documents remain in session memory. See [PRIVACY.md](PRIVACY.md) for permissions and source references. Source availability alone does not prove that a distributed package matches the source.
 
@@ -181,7 +181,7 @@ make all ENGINE=podman
 
 If both engines are installed, Docker is selected by default. Select Podman explicitly when you prefer it or Docker is not running. Docker must be usable by your account; do not run `sudo make all`. The container runs with your user/group ID so generated files are not owned by root. If your existing project files were created by root, correct their ownership before running the workflow.
 
-To check tool versions, run `make versions`. For individual commands, see `make help`. After `make all`, load `dist/chromium` using your browser's **Load unpacked** action or upload `releases/gosu-json-chromium-0.4.5.zip` to Chrome Web Store.
+To check tool versions, run `make versions`. For individual commands, see `make help`. After `make all`, load `dist/chromium` using your browser's **Load unpacked** action or upload `releases/gosu-json-chromium-0.4.8.zip` to Chrome Web Store.
 
 ### Without containers (optional)
 
@@ -209,3 +209,13 @@ If GOSU JSON helps you, you can optionally [support its development via PayPal](
 ### Updating the release version
 
 Change only `version` in `package.json`, then run `make all`. The container synchronizes the lockfile, validates the project and builds all browser manifests and versioned ZIP files. `make package` rejects stale builds. No host Node installation is required.
+
+### Firefox: see the workspace before allowing access
+
+Firefox opens a welcome workspace with fictional example data on first installation. On an endpoint, click the GOSU JSON toolbar icon: both JSON panels remain empty and a site-access banner appears. Choose **Allow and load JSON** and approve the browser prompt. This explicit action makes a new GET request without cookies or authentication headers. Declining leaves both panels empty. After loading, choose **Always on this site** to enable automatic opening. The first click is required on unapproved sites.
+
+On subsequent JSON navigations to an approved site, Firefox opens GOSU JSON automatically in a separate tab. The extension imports the original response bytes before the native viewer transforms them, without making another endpoint request. The original tab stays available. HTML pages, subframes and background API requests do not open the workspace. Revoking site access or choosing manual opening stops automatic imports.
+
+For authenticated endpoints, the first credential-free load may fail or return different data: copy the JSON from the original tab and paste it here, or approve the site, choose automatic opening, then navigate to the endpoint again. **Open URL** always makes a fresh request. Automatic capture preserves the already authorized browser response; it does not collect request cookies or authentication headers.
+
+Firefox 157 on Linux has been tested with an installed temporary extension and native permission dialogs. See [validation](docs/VALIDATION.md) for coverage and limits.

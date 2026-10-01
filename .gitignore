@@ -8,4 +8,9 @@ artifacts/
 *.xcworkspace/
 DerivedData/
 build/
+
+.venv/
+__pycache__/
+
 *.zip
+*.tar.*

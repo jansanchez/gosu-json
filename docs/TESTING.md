@@ -22,3 +22,21 @@ Record browser versions and actual results in the release PR. Do not label these
 Version 0.3 checks: verify distinct key/value colors in both themes and Code view; test regex scopes, case/exact options, invalid regex, timeout recovery; find the final row in a 30,000-element array and confirm few tree DOM rows; inspect duplicate keys independently and undo node edits.
 
 Version 0.4: load a public endpoint in the URL bar, refresh, bookmark/reopen its viewer link and modify the encoded endpoint in the address bar. Test 4xx JSON, non-JSON, redirects, cancellation, network failure and oversized/chunked responses. Native host permissions and cross-origin behavior must also be verified inside installed Chromium/Firefox extensions.
+
+## Firefox 0.4.8 native integration
+
+Install the Firefox build and verify the first-install welcome. Open a JSON endpoint and click the toolbar icon: both panels stay empty until approval. Test Not now and denial. Accept **Allow and load JSON**: expect one fresh credential-free GET and a formatted document. The original tab may be closed; loading should still work. If the endpoint needs authentication, paste the original response or opt into automatic opening and navigate to it again.
+
+Choose **Always on this site** and navigate again: exactly one request should produce one automatic workspace with the original response. The native viewer remains in the original tab. Verify huge numbers, Unicode and duplicate keys; HTML, plain text, invalid JSON, downloads and subframes must not trigger it. Test +json error responses, the 10 MiB limit, overlapping responses, permission revocation, manual opening and a browser restart. Check Chrome separately: first JSON navigation still opens automatically without a new per-site prompt.
+
+An optional Selenium integration check installs the packaged extension in real Firefox, exercises the native toolbar and permission dialog, and uses a local HTTP server:
+
+```sh
+python3 -m venv .venv
+.venv/bin/pip install selenium
+GOSU_FIREFOX_EXECUTABLE=/absolute/path/to/firefox \
+GOSU_GECKODRIVER_EXECUTABLE=/absolute/path/to/geckodriver \
+.venv/bin/python scripts/firefox-native-smoke.py
+```
+
+Run `make all` first to build the package. Firefox and geckodriver are external test tools, not runtime dependencies of the extension. The script tests permission denial/approval, empty panels, explicit first GET, automatic import without a second GET, exact large numbers, duplicate keys, Unicode, non-JSON rejection, +json HTTP errors and revocation. It does not cover browser restart, Windows/macOS or store signing. In containers that prevent Firefox sandbox creation, run this test in a normal desktop environment.

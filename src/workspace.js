@@ -1,3 +1,4 @@
+import { allowSite } from "./core/site-access.js";
 import {
   pointer,
   jsonPath,
@@ -34,6 +35,10 @@ let source = "",
   timer,
   searchTimer;
 let openingOrigin = null;
+let accessItem = null;
+const firefox = Boolean(
+  api?.runtime?.getManifest?.().browser_specific_settings?.gecko,
+);
 let requestController = null,
   requestVersion = 0,
   loadedURL = null;
@@ -845,9 +850,21 @@ document.addEventListener("drop", async (e) => {
 });
 async function chooseOpening(value) {
   if (!openingOrigin || !api) return;
+  if (
+    firefox &&
+    value === "always" &&
+    !(await allowSite(api, openingOrigin, true))
+  ) {
+    message("Site access declined. Automatic opening remains disabled.", true);
+    return;
+  }
   const { openingModes = {} } = await api.storage.local.get("openingModes");
   openingModes[openingOrigin] = value;
   await api.storage.local.set({ openingModes });
+  if (firefox) {
+    const result = await send({ type: "sync-opening" });
+    if (result?.error) throw new Error(result.error);
+  }
   $("#openingPrompt").hidden = true;
   message(
     value === "always"
@@ -868,10 +885,22 @@ function cancelRequest() {
   $("#cancelURL").hidden = true;
   requestStatus("Request cancelled. Previous document kept.");
 }
-async function openEndpoint(input, { updateLink = true } = {}) {
+async function openEndpoint(
+  input,
+  { updateLink = true, requestAccess = false } = {},
+) {
   let target;
   try {
     target = endpointURL(input);
+    if (firefox && !(await allowSite(api, target, requestAccess))) {
+      requestStatus(
+        requestAccess
+          ? "Site access declined. Previous document kept."
+          : "Click Open URL to allow access to this endpoint.",
+        true,
+      );
+      return;
+    }
   } catch (error) {
     requestStatus(error.message, true);
     return;
@@ -925,6 +954,13 @@ async function openEndpoint(input, { updateLink = true } = {}) {
     await setSource(result.text, true, formatted);
     if (version !== requestVersion) return;
     loadedURL = target;
+    if (firefox) {
+      accessItem = null;
+      $("#accessPrompt").hidden = true;
+      openingOrigin = new URL(target).origin;
+      $("#openingOrigin").textContent = openingOrigin;
+      $("#openingPrompt").hidden = false;
+    }
     $("#refreshURL").disabled = false;
     if (updateLink)
       history.replaceState(null, "", endpointLink(location.href, target));
@@ -952,7 +988,7 @@ async function openEndpoint(input, { updateLink = true } = {}) {
 }
 $("#endpointForm").onsubmit = (event) => {
   event.preventDefault();
-  openEndpoint($("#endpointURL").value);
+  openEndpoint($("#endpointURL").value, { requestAccess: true });
 };
 action("#refreshURL", () => openEndpoint(loadedURL ?? $("#endpointURL").value));
 action("#cancelURL", cancelRequest);
@@ -972,6 +1008,33 @@ window.addEventListener("hashchange", () => {
     requestStatus(error.message, true);
   }
 });
+function showAccess(item) {
+  accessItem = item;
+  $("#endpointURL").value = item.sourceURL;
+  $("#accessOrigin").textContent = item.origin;
+  $("#accessPrompt").hidden = false;
+}
+action("#allowAccess", async () => {
+  const item = accessItem;
+  if (!item) return;
+  // The permission request is made synchronously in the click gesture.
+  const granted = await allowSite(api, item.sourceURL, true);
+  if (!granted) {
+    $("#accessStatus").textContent =
+      "Access declined. Both panels remain empty. You can try again or paste your own JSON.";
+    return;
+  }
+  // Firefox's native JSON viewer cannot be imported via executeScript.
+  // This explicit action makes a fresh, credential-free GET in this workspace.
+  await openEndpoint(item.sourceURL, { requestAccess: false });
+  if (accessItem)
+    $("#accessStatus").textContent =
+      "Could not load this URL. See the endpoint status above. Authenticated responses can be copied from the original tab and pasted here.";
+});
+action("#declineAccess", () => {
+  $("#accessStatus").textContent =
+    "No JSON was read. Allow access when ready, or use Open file or Paste.";
+});
 async function init() {
   const linkedEndpoint = endpointFromHash(location.hash);
   if (api) {
@@ -982,7 +1045,28 @@ async function init() {
     if (id && !linkedEndpoint) {
       const item = await send({ type: "take", id });
       history.replaceState(null, "", location.pathname);
-      if (item?.text !== undefined) {
+      if (item?.requiresAccess) {
+        showAccess(item);
+      } else if (item?.welcome) {
+        $("#welcomePrompt").hidden = false;
+        $("#name").value = "GOSU JSON example";
+        await setSource(
+          JSON.stringify({
+            welcome: "GOSU JSON",
+            fictional: true,
+            users: [
+              { id: 1, name: "Alex", active: true },
+              { id: 2, name: "Sam", active: false },
+            ],
+            tips: [
+              "Search a value",
+              "Select users and choose Table",
+              "Edit and download your local copy",
+            ],
+          }),
+          true,
+        );
+      } else if (item?.text !== undefined) {
         $("#name").value = item.name;
         openingOrigin = item.origin ?? null;
         if (item.askOpening && openingOrigin) {

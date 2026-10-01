@@ -16,7 +16,7 @@ If Git is already initialized or `origin` already exists, inspect `git status` a
 
 CI tests and builds pull requests. Generated `dist/`, `releases/` and native Apple `build/` folders are excluded from Git. The source release ZIP contains prebuilt web extension resources; GitHub's automatic source archives do not.
 
-After the GitHub repository exists, tagging `v0.4.5` and pushing that tag runs **Draft release**. It checks the tag against `package.json`, builds the four browser resource packages, and creates a **draft prerelease** with ZIPs and SHA-256 checksums. Review it before making it public. This workflow does not submit to browser stores or create a signed Safari app.
+After the GitHub repository exists, tagging `v0.4.8` and pushing that tag runs **Draft release**. It checks the tag against `package.json`, builds the four browser resource packages, and creates a **draft prerelease** with ZIPs and SHA-256 checksums. Review it before making it public. This workflow does not submit to browser stores or create a signed Safari app.
 
 Run **Safari packaging** manually to generate the Xcode project and attempt an unsigned native compile on macOS. Inspect warnings and follow [SAFARI.md](SAFARI.md) for signing and real-browser validation.
 
@@ -31,7 +31,7 @@ The preview is not store-published or signed. The Firefox ID is a project identi
 ## Chrome Web Store: first publication
 
 1. Register a developer account in the [Chrome Developer Dashboard](https://chrome.google.com/webstore/devconsole). Pay the one-time registration fee shown by Google and complete account verification.
-2. Create a new item and upload `releases/gosu-json-chromium-0.4.5.zip`. Do not upload the source ZIP: `manifest.json` must be at the package root.
+2. Create a new item and upload `releases/gosu-json-chromium-0.4.8.zip`. Do not upload the source ZIP: `manifest.json` must be at the package root.
 3. Add the name, short description, full description, icon, screenshots and support URL. Use the README and presentation as starting points; do not claim untested browser support.
 4. Complete privacy disclosures and each permission justification. Explain the single purpose (JSON reading/editing), broad site access for MIME detection and endpoint loading, local preference storage, and explicit URL requests. Use a public privacy-policy URL once the GitHub repository exists.
 5. Choose distribution countries/visibility and submit for review. Address any reviewer feedback before publishing. Once approved and published, users install from the store without Developer mode.
@@ -42,7 +42,7 @@ Brave desktop supports Chrome Web Store extensions: a separate Brave upload is n
 
 1. Sign in with a Mozilla account at the [Add-ons Developer Hub](https://addons.mozilla.org/developers/).
 2. Submit a new add-on and choose **On this site** for a public Firefox Add-ons listing.
-3. Upload `releases/gosu-json-firefox-0.4.5.zip`, resolve validator errors and review warnings.
+3. Upload `releases/gosu-json-firefox-0.4.8.zip`, resolve validator errors and review warnings.
 4. Provide the source ZIP and reproducible build instructions for the bundled/minified code: Node.js 24+, `npm ci`, `npm run build`; resulting extension resources are in `dist/firefox`. The lockfile fixes dependency versions. The source package includes dependency license notices.
 5. Fill in description, screenshots, support details, MIT license and privacy/data declarations. The manifest declares no data collection by GOSU JSON; describe user-requested endpoint connections accurately.
 6. Submit for signing/publication and respond to review requests. A permanent user installation requires the signed version, not the temporary debugging installation.
@@ -57,4 +57,4 @@ Official publication guides: [Chrome](https://developer.chrome.com/docs/webstore
 
 ## Microsoft Edge Add-ons
 
-Use the dedicated `releases/gosu-json-edge-0.4.5.zip`. Register in Microsoft Partner Center, upload the package, complete the listing/privacy disclosures, and submit for certification. Native Edge testing remains pending. See [EDGE.md](EDGE.md) for local installation, validation and submission steps.
+Use the dedicated `releases/gosu-json-edge-0.4.8.zip`. Register in Microsoft Partner Center, upload the package, complete the listing/privacy disclosures, and submit for certification. Native Edge testing remains pending. See [EDGE.md](EDGE.md) for local installation, validation and submission steps.

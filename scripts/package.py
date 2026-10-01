@@ -21,7 +21,7 @@ for browser in ('chromium','edge','firefox','safari'):
             if p.is_file():z.write(p,p.relative_to(folder))
 with ZipFile(out/f'gosu-json-source-{version}.zip','w',ZIP_DEFLATED) as z:
     for p in sorted(root.rglob('*')):
-        if p.is_file() and not any(x in p.relative_to(root).parts for x in ('releases','.git','node_modules','artifacts','build')):
+        if p.is_file() and not any(x in p.relative_to(root).parts for x in ('releases','.git','node_modules','artifacts','build','.venv','__pycache__')):
             z.write(p,Path('gosu-json')/p.relative_to(root))
 print('Packaged source and all browser builds in releases/')
 

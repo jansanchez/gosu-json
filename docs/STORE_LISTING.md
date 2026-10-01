@@ -68,3 +68,9 @@ The text was reviewed against [Creating a great listing page](https://developer.
 | Support and privacy | Use accessible, published URLs. The intended GitHub repository is still pending.                                                                                         |
 
 Screenshots must show the current working UI with synthetic data. Capture at the target viewport instead of stretching the existing images. Use square corners, full bleed, little added text and no misleading badges. Inspect clarity at reduced size. A video can be added later; no video has been produced.
+
+## Firefox-specific listing and reviewer notes
+
+Firefox opens a welcome workspace with fictional example data on first installation. Clicking the toolbar icon on an endpoint opens the workspace before site permission is requested. Both panels remain empty until approval. **Allow and load JSON** explicitly makes a fresh credential-free GET; it does not reuse an authenticated response. After approval and **Always on this site**, top-level JSON responses open in a separate workspace using the original response bytes, with no duplicate request. The original tab remains available. HTML, subframes and background API responses are ignored. Optional host access is required; manual opening and revocation stop automatic imports.
+
+Firefox additionally requests `webRequest`, `webRequestBlocking` and `webRequestFilterResponse` to attach a bounded response stream before the browser's native JSON viewer isolates the document. The stream reads only approved top-level JSON bodies, passes bytes unchanged and modifies no response headers. No analytics, affiliate scripts, remote code or extension-operated endpoints are involved. Chrome/Edge retain their existing required HTTP/HTTPS access and automatic-opening flow.
